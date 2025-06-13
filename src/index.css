@@ -36,20 +36,25 @@
 
     --radius: 0.5rem;
 
+    /* Game specific variables */
+    --neon-cyan: 180 100% 50%;
+    --neon-pink: 326 100% 50%;
+    --neon-purple: 270 100% 50%;
+    --neon-green: 120 100% 50%;
+    --neon-blue: 240 100% 50%;
+    --neon-orange: 30 100% 50%;
+    
+    --game-bg: 220 20% 5%;
+    --game-surface: 220 15% 10%;
+    --game-glow: 180 100% 50%;
+
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -99,5 +104,49 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .neon-border {
+    border: 2px solid currentColor;
+    box-shadow: 
+      0 0 10px currentColor,
+      inset 0 0 10px currentColor;
+  }
+  
+  .cell-x {
+    color: hsl(var(--neon-cyan));
+    text-shadow: 
+      0 0 10px hsl(var(--neon-cyan)),
+      0 0 20px hsl(var(--neon-cyan)),
+      0 0 30px hsl(var(--neon-cyan));
+  }
+  
+  .cell-o {
+    color: hsl(var(--neon-pink));
+    text-shadow: 
+      0 0 10px hsl(var(--neon-pink)),
+      0 0 20px hsl(var(--neon-pink)),
+      0 0 30px hsl(var(--neon-pink));
+  }
+  
+  .game-title {
+    background: linear-gradient(45deg, 
+      hsl(var(--neon-cyan)), 
+      hsl(var(--neon-purple)), 
+      hsl(var(--neon-pink))
+    );
+    background-size: 400% 400%;
+    animation: gradient-shift 3s ease infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  @keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 }

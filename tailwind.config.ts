@@ -20,6 +20,20 @@ export default {
 		extend: {
 			colors: {
 				border: 'hsl(var(--border))',
+				// Game specific colors
+				neon: {
+					cyan: 'hsl(var(--neon-cyan))',
+					pink: 'hsl(var(--neon-pink))',
+					purple: 'hsl(var(--neon-purple))',
+					green: 'hsl(var(--neon-green))',
+					blue: 'hsl(var(--neon-blue))',
+					orange: 'hsl(var(--neon-orange))',
+				},
+				game: {
+					bg: 'hsl(var(--game-bg))',
+					surface: 'hsl(var(--game-surface))',
+					glow: 'hsl(var(--game-glow))',
+				},
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
@@ -84,11 +98,47 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'flip': {
+					'0%': { transform: 'perspective(400px) rotateY(0)' },
+					'50%': { transform: 'perspective(400px) rotateY(180deg)' },
+					'100%': { transform: 'perspective(400px) rotateY(0)' }
+				},
+				'glow-pulse': {
+					'0%, 100%': { 
+						boxShadow: '0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor',
+						transform: 'scale(1)'
+					},
+					'50%': { 
+						boxShadow: '0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor',
+						transform: 'scale(1.05)'
+					}
+				},
+				'neon-flicker': {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.8' },
+					'75%': { opacity: '0.9' }
+				},
+				'winner-celebration': {
+					'0%': { transform: 'scale(1) rotate(0deg)' },
+					'25%': { transform: 'scale(1.1) rotate(5deg)' },
+					'50%': { transform: 'scale(1.2) rotate(-5deg)' },
+					'75%': { transform: 'scale(1.1) rotate(3deg)' },
+					'100%': { transform: 'scale(1) rotate(0deg)' }
+				},
+				'slide-in': {
+					'0%': { transform: 'translateY(-100px)', opacity: '0' },
+					'100%': { transform: 'translateY(0)', opacity: '1' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'flip': 'flip 0.6s ease-in-out',
+				'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
+				'neon-flicker': 'neon-flicker 1.5s ease-in-out infinite',
+				'winner-celebration': 'winner-celebration 0.8s ease-in-out',
+				'slide-in': 'slide-in 0.5s ease-out'
 			}
 		}
 	},
